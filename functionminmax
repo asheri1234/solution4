@@ -1,0 +1,16 @@
+<php
+function miniMaxsum($arr){
+sort($arr);
+$b = count($arr);
+$min = 0;
+$max = 0;
+    for($c=0;$c<4;$c++){
+        $min = $min+$arr[$c];
+    }
+    for($d=4;$d>0;$d--){
+        $max = $max+$arr[$d];
+}
+    echo $min .' '. $max;
+}
+
+?>
