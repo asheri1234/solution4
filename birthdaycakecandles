@@ -1,0 +1,50 @@
+<php
+
+
+$handle = fopen ("php://stdin", "r");
+function birthdayCakeCandles($ar) {
+
+ $max = $ar[0];
+    $counts = [];
+    foreach($ar as $a) {
+      if(isset($counts[$a])) {
+          $counts[$a]++;
+      }else {
+        $counts[$a] = 1;
+      }
+      
+      if($a > $max) {
+        $max = $a; 
+      } 
+    }
+    return $counts[$max];
+}
+
+
+fscanf($handle, "%i",$n);
+$ar_temp = fgets($handle);
+$ar = explode(" ",$ar_temp);
+$ar = array_map('intval', $ar);
+$result = birthdayCakeCandles($n, $ar);
+echo $result . "\n";
+
+
+
+$fptr = fopen(getenv("OUTPUT_PATH"), "w");
+
+$stdin = fopen("php://stdin", "r");
+
+fscanf($stdin, "%d\n", $ar_count);
+
+fscanf($stdin, "%[^\n]", $ar_temp);
+
+$ar = array_map('intval', preg_split('/ /', $ar_temp, -1, PREG_SPLIT_NO_EMPTY));
+
+$result = birthdayCakeCandles($ar);
+
+fwrite($fptr, $result . "\n");
+
+fclose($stdin);
+fclose($fptr);
+
+?>
